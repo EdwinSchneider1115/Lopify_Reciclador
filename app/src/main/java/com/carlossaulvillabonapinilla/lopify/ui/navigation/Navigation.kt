@@ -9,6 +9,7 @@ import com.carlossaulvillabonapinilla.lopify.ui.screens.LoginScreen
 import com.carlossaulvillabonapinilla.lopify.ui.screens.LoopifySplashScreen
 import com.carlossaulvillabonapinilla.lopify.ui.screens.MapScreen
 import com.carlossaulvillabonapinilla.lopify.ui.screens.MetasScreen
+import com.carlossaulvillabonapinilla.lopify.ui.screens.PerfilScreen
 import com.carlossaulvillabonapinilla.lopify.ui.screens.RegisterScreen
 
 object Routes {
@@ -18,16 +19,14 @@ object Routes {
     const val HOME     = "home"
     const val MAP      = "map"
     const val METAS    = "metas"
+    const val PERFIL   = "perfil"
 }
 
 @Composable
 fun LoopifyNavGraph() {
     val navController = rememberNavController()
 
-    NavHost(
-        navController = navController,
-        startDestination = Routes.SPLASH
-    ) {
+    NavHost(navController = navController, startDestination = Routes.SPLASH) {
 
         composable(Routes.SPLASH) {
             LoopifySplashScreen(
@@ -49,9 +48,7 @@ fun LoopifyNavGraph() {
                 onGoogleClick = { },
                 onFacebookClick = { },
                 onForgotPassword = { },
-                onRegister = {
-                    navController.navigate(Routes.REGISTER)
-                }
+                onRegister = { navController.navigate(Routes.REGISTER) }
             )
         }
 
@@ -76,6 +73,7 @@ fun LoopifyNavGraph() {
                     when (index) {
                         2 -> navController.navigate(Routes.METAS)
                         3 -> navController.navigate(Routes.MAP)
+                        4 -> navController.navigate(Routes.PERFIL)
                     }
                 }
             )
@@ -88,11 +86,10 @@ fun LoopifyNavGraph() {
                 onNavItemSelected = { index ->
                     selectedNavIndex = index
                     when (index) {
-                        0 -> navController.navigate(Routes.HOME) {
-                            popUpTo(Routes.HOME) { inclusive = false }
-                        }
+                        0 -> navController.navigate(Routes.HOME) { popUpTo(Routes.HOME) { inclusive = false } }
                         2 -> navController.navigate(Routes.METAS)
                         3 -> { }
+                        4 -> navController.navigate(Routes.PERFIL)
                     }
                 },
                 onNavigateToHome = { navController.popBackStack() }
@@ -106,11 +103,27 @@ fun LoopifyNavGraph() {
                 onNavItemSelected = { index ->
                     selectedNavIndex = index
                     when (index) {
-                        0 -> navController.navigate(Routes.HOME) {
-                            popUpTo(Routes.HOME) { inclusive = false }
-                        }
+                        0 -> navController.navigate(Routes.HOME) { popUpTo(Routes.HOME) { inclusive = false } }
                         2 -> { }
                         3 -> navController.navigate(Routes.MAP)
+                        4 -> navController.navigate(Routes.PERFIL)
+                    }
+                },
+                onNavigateToHome = { navController.popBackStack() }
+            )
+        }
+
+        composable(Routes.PERFIL) {
+            var selectedNavIndex by remember { mutableStateOf(4) }
+            PerfilScreen(
+                selectedNavIndex = selectedNavIndex,
+                onNavItemSelected = { index ->
+                    selectedNavIndex = index
+                    when (index) {
+                        0 -> navController.navigate(Routes.HOME) { popUpTo(Routes.HOME) { inclusive = false } }
+                        2 -> navController.navigate(Routes.METAS)
+                        3 -> navController.navigate(Routes.MAP)
+                        4 -> { }
                     }
                 },
                 onNavigateToHome = { navController.popBackStack() }
