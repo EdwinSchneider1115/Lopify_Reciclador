@@ -30,10 +30,10 @@ import com.mapbox.maps.extension.compose.animation.viewport.rememberMapViewportS
 import com.mapbox.maps.extension.compose.annotation.generated.PointAnnotation
 import com.mapbox.maps.extension.compose.annotation.generated.PolylineAnnotation
 
-private val IconGreen         = Color(0xFF0A1A05)
-private val BackgroundSurface = Color(0xFF93E575)
+private val IconGreen         = Color(0xFF0A1A1F)
+private val BackgroundSurface = Color(0xFF72C8C0)
 private val GlassSelector     = Color(0x33FFFFFF)
-private val TextBlack         = Color(0xFF1A1A1A)
+private val TextBlack         = Color(0xFF1A1A2E)
 
 @Composable
 fun MapScreen(
@@ -82,7 +82,7 @@ fun MapScreen(
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = listOf(Color(0xFF2ECC40), Color(0xFFA4DCA4), Color(0xFFBBEABB)),
+                    colors = listOf(Color(0xFF2EB8B0), Color(0xFF89D9C4), Color(0xFFB2EAE0)),
                     startY = 0f, endY = 1200f
                 )
             )
@@ -120,7 +120,7 @@ fun MapScreen(
             Row(modifier = Modifier.padding(horizontal = 20.dp)) {
                 Surface(
                     shape = RoundedCornerShape(20.dp),
-                    color = Color(0xFF2ECC40)
+                    color = Color(0xFF0D6E6E)
                 ) {
                     Text(
                         text = "Todos",
@@ -178,7 +178,7 @@ fun MapScreen(
                 // Etiqueta sobre el mapa
                 Surface(
                     shape = RoundedCornerShape(12.dp),
-                    color = Color(0xFF2ECC40),
+                    color = Color(0xFF0D6E6E),
                     modifier = Modifier
                         .align(Alignment.BottomStart)
                         .padding(16.dp)
@@ -224,7 +224,7 @@ fun MapScreen(
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             Surface(
                                 shape = RoundedCornerShape(20.dp),
-                                color = Color(0xFF81C784)
+                                color = Color(0xFF2EB8B0)
                             ) {
                                 Text(
                                     "Aceptar",
@@ -307,7 +307,7 @@ fun MapNavBar(
                         .size(70.dp)
                         .shadow(10.dp, CircleShape)
                         .clip(CircleShape)
-                        .background(Brush.verticalGradient(listOf(Color(0xFF8EDF7C), Color(0xFF2D741C))))
+                        .background(Brush.verticalGradient(listOf(Color(0xFF4DD9D0), Color(0xFF0D6E6E))))
                         .clickable { onItemSelected(2) },
                     contentAlignment = Alignment.Center
                 ) {

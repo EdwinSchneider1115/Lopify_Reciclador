@@ -418,7 +418,7 @@ fun PerfilNavBar(
                         .size(70.dp)
                         .shadow(10.dp, CircleShape)
                         .clip(CircleShape)
-                        .background(Brush.verticalGradient(listOf(Color(0xFF8EDF7C), Color(0xFF2D741C))))
+                        .background(Brush.verticalGradient(listOf(Color(0xFF4DD9D0), Color(0xFF0D6E6E))))
                         .clickable { onItemSelected(2) },
                     contentAlignment = Alignment.Center
                 ) {

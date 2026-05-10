@@ -44,12 +44,12 @@ import com.mapbox.maps.extension.compose.annotation.generated.PointAnnotation
 import com.mapbox.maps.extension.compose.annotation.generated.PolylineAnnotation
 
 // ─── COLORES GLOBALES ─────────────────────────────────────────────────────────
-private val IconGreen         = Color(0xFF0A1A05)
-private val BackgroundSurface = Color(0xFF93E575)
+private val IconGreen         = Color(0xFF0A1A1F)
+private val BackgroundSurface = Color(0xFF72C8C0)
 private val GlassSelector     = Color(0x33FFFFFF)
-private val TextBlack         = Color(0xFF1A1A1A)
-private val DarkGreenText     = Color(0xFF1B5E20)
-private val LightGrayText     = Color(0xFF757575)
+private val TextBlack         = Color(0xFF1A1A2E)
+private val DarkGreenText     = Color(0xFF0D6E6E)
+private val LightGrayText     = Color(0xFF607D8B)
 
 // ─── DATA CLASSES ─────────────────────────────────────────────────────────────
 data class DeliveryData(
@@ -78,7 +78,7 @@ fun HomeScreen(
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = listOf(Color(0xFF2ECC40), Color(0xFFA4DCA4), Color(0xFFBBEABB)),
+                    colors = listOf(Color(0xFF2EB8B0), Color(0xFF89D9C4), Color(0xFFB2EAE0)),
                     startY = 0f, endY = 1200f
                 )
             )
@@ -471,7 +471,7 @@ fun HomeNavBar(
                         .size(70.dp)
                         .shadow(10.dp, CircleShape)
                         .clip(CircleShape)
-                        .background(Brush.verticalGradient(listOf(Color(0xFF8EDF7C), Color(0xFF2D741C))))
+                        .background(Brush.verticalGradient(listOf(Color(0xFF4DD9D0), Color(0xFF0D6E6E))))
                         .clickable { onItemSelected(2) },
                     contentAlignment = Alignment.Center
                 ) {

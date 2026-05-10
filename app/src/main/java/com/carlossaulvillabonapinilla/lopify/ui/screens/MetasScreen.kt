@@ -27,11 +27,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.carlossaulvillabonapinilla.lopify.R
 
-private val IconGreen         = Color(0xFF0A1A05)
-private val BackgroundSurface = Color(0xFF93E575)
+private val IconGreen         = Color(0xFF0A1A1F)
+private val BackgroundSurface = Color(0xFF72C8C0)
 private val GlassSelector     = Color(0x33FFFFFF)
-private val TextBlack         = Color(0xFF1A1A1A)
-private val DarkGreenText     = Color(0xFF1B5E20)
+private val TextBlack         = Color(0xFF1A1A2E)
+private val DarkGreenText     = Color(0xFF0D6E6E)
 
 data class MetaData(
     val titulo: String,
@@ -60,7 +60,7 @@ fun MetasScreen(
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = listOf(Color(0xFF2ECC40), Color(0xFFA4DCA4), Color(0xFFBBEABB)),
+                    colors = listOf(Color(0xFF2EB8B0), Color(0xFF89D9C4), Color(0xFFB2EAE0)),
                     startY = 0f, endY = 1200f
                 )
             )
@@ -115,7 +115,7 @@ fun MetasScreen(
                 ) {
                     Row(
                         modifier = Modifier
-                            .background(Brush.linearGradient(listOf(Color(0xFF43A047), Color(0xFF1B5E20))))
+                            .background(Brush.linearGradient(listOf(Color(0xFF2EB8B0), Color(0xFF0D6E6E))))
                             .padding(20.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -326,7 +326,7 @@ fun MetasNavBar(
                         .size(70.dp)
                         .shadow(10.dp, CircleShape)
                         .clip(CircleShape)
-                        .background(Brush.verticalGradient(listOf(Color(0xFF8EDF7C), Color(0xFF2D741C))))
+                        .background(Brush.verticalGradient(listOf(Color(0xFF4DD9D0), Color(0xFF0D6E6E))))
                         .clickable { onItemSelected(2) },
                     contentAlignment = Alignment.Center
                 ) {
