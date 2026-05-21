@@ -31,6 +31,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
+import com.carlossaulvillabonapinilla.lopify.viewmodel.AuthViewModel
 import com.carlossaulvillabonapinilla.lopify.R
 
 // Importaciones de Mapbox
@@ -68,10 +72,16 @@ data class CategoryData(val name: String, val iconRes: Int)
 
 @Composable
 fun HomeScreen(
+    viewModel: AuthViewModel,
     selectedNavIndex: Int = 0,
     onNavItemSelected: (Int) -> Unit = {}
 ) {
     var isStreakActive by remember { mutableStateOf(true) }
+    LaunchedEffect(Unit) {
+        viewModel.loadUserData()
+    }
+
+    val userName by viewModel.userName.collectAsState()
 
     Box(
         modifier = Modifier
@@ -89,7 +99,7 @@ fun HomeScreen(
         ) {
             item {
                 HomeHeader(
-                    userName = "Carlos Diaz",
+                    userName = userName,
                     streakCount = 3,
                     isStreakActive = isStreakActive,
                     onStreakClick = { isStreakActive = !isStreakActive },

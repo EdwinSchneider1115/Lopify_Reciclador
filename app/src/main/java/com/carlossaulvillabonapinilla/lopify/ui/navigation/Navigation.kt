@@ -1,6 +1,7 @@
 package com.carlossaulvillabonapinilla.lopify.ui.navigation
 
 import androidx.compose.runtime.*
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -12,6 +13,12 @@ import com.carlossaulvillabonapinilla.lopify.ui.screens.MapScreen
 import com.carlossaulvillabonapinilla.lopify.ui.screens.MetasScreen
 import com.carlossaulvillabonapinilla.lopify.ui.screens.PerfilScreen
 import com.carlossaulvillabonapinilla.lopify.ui.screens.RegisterScreen
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.LaunchedEffect
+import com.carlossaulvillabonapinilla.lopify.viewmodel.AuthState
+import com.carlossaulvillabonapinilla.lopify.viewmodel.AuthViewModel
+import com.carlossaulvillabonapinilla.lopify.viewmodel.RegisterViewModel
 
 object Routes {
     const val SPLASH    = "splash"
@@ -26,9 +33,14 @@ object Routes {
 
 @Composable
 fun LoopifyNavGraph() {
-    val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Routes.SPLASH) {
+    val navController = rememberNavController()
+    val authViewModel: AuthViewModel = viewModel()
+
+    NavHost(
+        navController = navController,
+        startDestination = Routes.SPLASH
+    ) {
 
         composable(Routes.SPLASH) {
             LoopifySplashScreen(
@@ -44,31 +56,39 @@ fun LoopifyNavGraph() {
             LoginScreen(
                 onLoginClick = {
                     navController.navigate(Routes.HOME) {
-                        popUpTo(Routes.LOGIN) { inclusive = true }
+                        popUpTo(0) { inclusive = true }
                     }
                 },
                 onGoogleClick = { },
                 onFacebookClick = { },
                 onForgotPassword = { },
-                onRegister = { navController.navigate(Routes.REGISTER) }
+                onRegister = {
+                    navController.navigate(Routes.REGISTER)
+                }
             )
         }
 
         composable(Routes.REGISTER) {
+
+            val registerViewModel: RegisterViewModel = viewModel()
+
             RegisterScreen(
+                viewModel = registerViewModel,
                 onBackClick = { navController.popBackStack() },
-                onRegisterClick = {
+                onLoginClick = {
                     navController.navigate(Routes.LOGIN) {
-                        popUpTo(Routes.LOGIN) { inclusive = false }
+                        popUpTo(Routes.REGISTER) { inclusive = true }
                     }
-                },
-                onLoginClick = { navController.popBackStack() }
+                }
             )
         }
 
         composable(Routes.HOME) {
+
             var selectedNavIndex by remember { mutableStateOf(0) }
+
             HomeScreen(
+                viewModel = authViewModel,
                 selectedNavIndex = selectedNavIndex,
                 onNavItemSelected = { index ->
                     selectedNavIndex = index
@@ -83,7 +103,9 @@ fun LoopifyNavGraph() {
         }
 
         composable(Routes.HISTORIAL) {
+
             var selectedNavIndex by remember { mutableStateOf(1) }
+
             HistorialScreen(
                 selectedNavIndex = selectedNavIndex,
                 onNavItemSelected = { index ->
@@ -103,7 +125,9 @@ fun LoopifyNavGraph() {
         }
 
         composable(Routes.MAP) {
+
             var selectedNavIndex by remember { mutableStateOf(3) }
+
             MapScreen(
                 selectedNavIndex = selectedNavIndex,
                 onNavItemSelected = { index ->
@@ -123,7 +147,9 @@ fun LoopifyNavGraph() {
         }
 
         composable(Routes.METAS) {
+
             var selectedNavIndex by remember { mutableStateOf(2) }
+
             MetasScreen(
                 selectedNavIndex = selectedNavIndex,
                 onNavItemSelected = { index ->
@@ -143,7 +169,9 @@ fun LoopifyNavGraph() {
         }
 
         composable(Routes.PERFIL) {
+
             var selectedNavIndex by remember { mutableStateOf(4) }
+
             PerfilScreen(
                 selectedNavIndex = selectedNavIndex,
                 onNavItemSelected = { index ->

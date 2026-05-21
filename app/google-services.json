@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "300471822976",
+    "project_id": "loopifyreciclador",
+    "storage_bucket": "loopifyreciclador.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300471822976:android:8721b4fc4b46542acd5465",
+        "android_client_info": {
+          "package_name": "com.carlossaulvillabonapinilla.lopify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkSNd_tAdaQGsIrbwOOA2lidhFWByQVHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
