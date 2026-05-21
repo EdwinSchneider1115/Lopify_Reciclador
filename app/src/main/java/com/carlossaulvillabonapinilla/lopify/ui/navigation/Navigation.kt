@@ -173,6 +173,7 @@ fun LoopifyNavGraph() {
             var selectedNavIndex by remember { mutableStateOf(4) }
 
             PerfilScreen(
+                viewModel = authViewModel,
                 selectedNavIndex = selectedNavIndex,
                 onNavItemSelected = { index ->
                     selectedNavIndex = index

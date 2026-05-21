@@ -27,6 +27,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.carlossaulvillabonapinilla.lopify.viewmodel.AuthViewModel
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import com.carlossaulvillabonapinilla.lopify.R
 
 private val IconGreen         = Color(0xFF0A1A1F)
@@ -37,10 +41,14 @@ private val DarkGreenText     = Color(0xFF0D6E6E)
 
 @Composable
 fun PerfilScreen(
+    viewModel: AuthViewModel,
     onNavigateToHome: () -> Unit,
     onNavItemSelected: (Int) -> Unit,
     selectedNavIndex: Int
 ) {
+    LaunchedEffect(Unit) { viewModel.loadUserData() }
+    val userName by viewModel.userName.collectAsState()
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -117,7 +125,7 @@ fun PerfilScreen(
 
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
-                                text = "Carlos Diaz",
+                                text = userName,
                                 fontSize = 24.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = TextBlack
